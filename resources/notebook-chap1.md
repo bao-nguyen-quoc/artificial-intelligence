@@ -64,18 +64,18 @@ A và B tương đương (`A ≡ B`) nếu chúng luôn có cùng giá trị ch�
 #### 1.1.4 Chuẩn hoá về CNF
 
 Dạng chuẩn hội (CNF) = tích (∧) của các tổng (∨).
-Ví dụ: `(P∨Q) ∧ (¬R∨S) ∧ (P∨¬Q∨R)`.
+Ví dụ: `(P ∨ Q) ∧ (¬R ∨ S) ∧ (P ∨ ¬Q ∨ R)`.
 
 **Quy trình 3 bước**:
 
-cho công thức `(P⇒Q) ∨ ¬(R∨¬S)`:
+cho công thức `(P ⇒ Q) ∨ ¬(R ∨ ¬S)`:
 
-1. **Loại bỏ `⇒`, `⟺`** (dùng `A⇒B ≡ ¬A∨B`):
-  `(¬P∨Q) ∨ ¬(R∨¬S)`
+1. **Loại bỏ `⇒`, `⟺`** (dùng `A ⇒ B ≡ ¬A ∨ B`):
+  `(¬P ∨ Q) ∨ ¬(R ∨ ¬S)`
 2. **Đưa phủ định vào trong** (De Morgan):
-  `(¬P∨Q) ∨ (¬R∧S)`
+  `(¬P ∨ Q) ∨ (¬R ∧ S)`
 3. **Phân phối `∨` vào `∧`**:
-  `(¬P∨Q∨¬R) ∧ (¬P∨Q∨S)`
+  `(¬P ∨ Q ∨ ¬R) ∧ (¬P ∨ Q ∨ S)`
 
 #### 1.1.5 Luật suy diễn
 
@@ -342,6 +342,6 @@ Phân giải C4, C13:
   C14: giet(Am, Bibi)
 ```
 
-→ **Am giết Bibi.**
+Vậy **Am giết Bibi.**
 
 *So sánh:* Cách 2 đi thẳng bằng phân giải thuận (forward resolution), không cần giả thiết phản chứng ban đầu - suy luận có ý nghĩa ngữ nghĩa rõ ràng hơn ở từng bước (Ba nuôi chó → Ba yêu động vật → Ba không giết động vật → vậy phải là Am). Tuy nhiên, Cách 1 với tư duy phản chứng cũng là 1 phương án thông dụng trong nhiều suy luận toán học.
