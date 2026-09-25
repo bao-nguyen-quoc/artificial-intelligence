@@ -17,6 +17,24 @@ Game playing · Automated reasoning & Theorem proving · Expert systems · Plann
 
 ## Chapter 1: Suy luận logic
 
+### Mục lục
+
+- [1.1 Logic mệnh đề](#11-logic-mệnh-đề)
+  - [1.1.1 Cú pháp](#111-cú-pháp)
+  - [1.1.2 Ngữ nghĩa](#112-ngữ-nghĩa)
+  - [1.1.3 Các công thức tương đương](#113-các-công-thức-tương-đương)
+  - [1.1.4 Chuẩn hoá về CNF](#114-chuẩn-hoá-về-cnf)
+  - [1.1.5 Luật suy diễn](#115-luật-suy-diễn)
+  - [1.1.6 Phương pháp chứng minh bác bỏ (Refutation)](#116-phương-pháp-chứng-minh-bác-bỏ-refutation)
+  - [1.1.7 Bài tập vận dụng](#117-bài-tập-vận-dụng)
+- [1.2 Logic vị từ](#12-logic-vị-từ)
+  - [1.2.1 Giới hạn của Logic mệnh đề](#121-giới-hạn-của-logic-mệnh-đề)
+  - [1.2.2 Định nghĩa](#122-định-nghĩa)
+  - [1.2.3 Cú pháp](#123-cú-pháp)
+  - [1.2.4 Công thức tương đương](#124-công-thức-tương-đương)
+  - [1.2.5 Chuẩn hoá công thức vị từ về CNF](#125-chuẩn-hoá-công-thức-vị-từ-về-cnf)
+- [1.3 Ví dụ tổng hợp: "Ai giết mèo Bibi?"](#13-ví-dụ-tổng-hợp-ai-giết-mèo-bibi)
+
 **Vấn đề:** Con người nhận thức thế giới qua giác quan, dùng tri thức tích luỹ để hành động hợp lý thông qua lập luận, suy diễn.
 **Mục tiêu:** Khiến AI làm được điều tương tự.
 
