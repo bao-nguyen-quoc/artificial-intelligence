@@ -1,6 +1,4 @@
-import pytest
-
-from src.utils import Graph, Node
+from src.utils import Graph
 from src.blind_search.bfs import bfs
 
 
