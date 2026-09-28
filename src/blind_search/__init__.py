@@ -1,0 +1,1 @@
+from src.blind_search.bfs import bfs
