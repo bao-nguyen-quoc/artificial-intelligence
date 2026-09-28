@@ -46,7 +46,7 @@
 
 Make sure you will commit with correct [semantic rules](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716):
 
-- **feat**: (new feature for the user)
+- **feat**: (new feature for the user, or resolved an issue)
 - **feat!**: (breaking changes, new feature for the user)
 - **fix**: (bug fix for the user)
 - **fix!**: (breaking changes, bug fix for the user)

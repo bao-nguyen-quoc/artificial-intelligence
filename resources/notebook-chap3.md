@@ -86,7 +86,11 @@ Ví dụ: Đi từ TP.A đến TP.B, sao cho nhanh nhất, rẻ nhất. BFS và 
 2. Nếu `open` rỗng → tìm kiếm thất bại, kết thúc.
 3. Lấy đỉnh đầu trong `open` ra, gọi là `O`. Cho `O` vào `closed`.
 4. Nếu `O` là đỉnh đích → tìm kiếm thành công, kết thúc.
-5. Tìm tất cả các đỉnh con của `O` **không thuộc `open` và `closed`**, cho vào `open` theo thứ tự tăng dần về **tổng chi phí g(n) từ đỉnh xuất phát**.
+5. Tìm tất cả các đỉnh con của `O`:
+  - Nếu con **không thuộc `open` và `closed`**, thêm vào `open`.
+  - Nếu con đã có trong `open` nhưng có g(con) cao hơn, cập nhật g(con) và parent.
+  - Nếu con đã có trong `closed`, bỏ qua.
+  Sắp xếp `open` theo thứ tự tăng dần về **tổng chi phí g(n) từ đỉnh xuất phát**.
 6. Quay lại bước 2.
 
 **Tính chất:**
