@@ -41,3 +41,9 @@ To run with verbose output:
 ```bash
 pytest -v
 ```
+
+### 5. Deactivate the virtual environment
+
+```bash
+deactivate
+```
