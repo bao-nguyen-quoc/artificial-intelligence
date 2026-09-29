@@ -1,4 +1,4 @@
-from src.utils import Graph, Node
+from ..utils import Graph, Node
 
 
 def dfs(graph: Graph, start: any, goal: any) -> Node | None:
