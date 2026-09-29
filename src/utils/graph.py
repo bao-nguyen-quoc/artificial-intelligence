@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Any
 
+
 @dataclass
 class Node:
     state: Any
@@ -15,24 +16,25 @@ class Node:
         Returns:
             List of nodes from root to current node
         """
-        nodes: list["Node"] = []
-        node: "Node | None" = self
+        nodes: list[Node] = []
+        node: Node | None = self
         while node:
             nodes.append(node)
             node = node.parent
         return list(reversed(nodes))
 
+
 class Graph:
-    def __init__(self, directed = False):
+    def __init__(self, directed=False):
         """Constructor"""
         self.edges: dict[Any, list] = {}
         self.weight: dict[tuple, float] = {}
         self.directed = directed
-    
+
     def add_edge(self, u: Any, v: Any, weight: float = 1.0):
         """
         Add weighted edge to graph
-        
+
         Args:
             u: Node to add edge `from`
             v: Node to add edge `to`
@@ -50,7 +52,7 @@ class Graph:
 
         Args:
             node: Node to get neighbors of
-        
+
         Returns:
             List of neighbors of the node
         """
@@ -63,7 +65,7 @@ class Graph:
         Args:
             u: Node to get weight from
             v: Node to get weight to
-        
+
         Returns:
             Weight of the edge
         """

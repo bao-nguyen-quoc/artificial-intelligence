@@ -1,5 +1,5 @@
-from src.utils import Graph
 from src.blind_search.bfs import bfs
+from src.utils import Graph
 
 
 class TestBfsBasic:

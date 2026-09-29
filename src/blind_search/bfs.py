@@ -1,5 +1,7 @@
 from collections import deque
+
 from src.utils import Graph, Node
+
 
 def bfs(graph: Graph, start: any, goal: any) -> Node | None:
     """
@@ -39,7 +41,8 @@ def bfs(graph: Graph, start: any, goal: any) -> Node | None:
                     state=neighbor,
                     parent=current,
                     action=neighbor,
-                    path_cost=current.path_cost + graph.get_weight(current.state, neighbor),
+                    path_cost=current.path_cost
+                    + graph.get_weight(current.state, neighbor),
                 )
                 open_list.append(child)
                 open_states.add(neighbor)

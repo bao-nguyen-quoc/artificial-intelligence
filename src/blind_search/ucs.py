@@ -2,6 +2,7 @@ import heapq
 
 from src.utils import Graph, Node
 
+
 def ucs(graph: Graph, start: any, goal: any) -> Node | None:
     """
     Uniform Cost Search Algorithm
@@ -73,4 +74,54 @@ def ucs(graph: Graph, start: any, goal: any) -> Node | None:
 
     # Step 2 (loop ended): open is empty -> search fails
     return None
-
+
+
+def ucs_traditional(graph: Graph, start: any, goal: any) -> Node | None:
+    """
+    Uniform Cost Search Algorithm (traditional way without using heapq)
+
+    Args:
+        graph: Graph to search in
+        start: Start node
+        goal: Goal node
+
+    Returns:
+        Node if goal is found, None otherwise
+    """
+    # Step 1: Put start node into open
+    open_nodes: dict[any, Node] = {start: Node(state=start, path_cost=0)}
+    closed_states: set = set()
+
+    # Step 2: If open is empty -> search fails
+    while open_nodes:
+        # Step 3: Take the node with lowest g(n) from open, call it O. Put O into closed.
+        best_state = min(open_nodes, key=lambda s: open_nodes[s].path_cost)
+        current = open_nodes.pop(best_state)
+        closed_states.add(best_state)
+
+        # Step 4: If O is the goal -> search succeeds
+        if current.state == goal:
+            return current
+
+        # Step 5: Find all children of O
+        for child in graph.get_neighbors(current.state):
+            new_cost = current.path_cost + graph.get_weight(current.state, child)
+
+            # If child already in closed_states, skip
+            if child in closed_states:
+                continue
+
+            # If child is in open, update if new cost is lower
+            elif child in open_nodes:
+                if new_cost < open_nodes[child].path_cost:
+                    open_nodes[child] = Node(
+                        state=child, parent=current, action=child, path_cost=new_cost
+                    )
+
+            # If child not in open and closed, add to open
+            else:
+                open_nodes[child] = Node(
+                    state=child, parent=current, action=child, path_cost=new_cost
+                )
+
+    return None

@@ -1,5 +1,6 @@
 from src.utils import Graph, Node
 
+
 def dfs(graph: Graph, start: any, goal: any) -> Node | None:
     """
     Depth-First Search Algorithm
@@ -39,11 +40,12 @@ def dfs(graph: Graph, start: any, goal: any) -> Node | None:
                     state=neighbor,
                     parent=current,
                     action=neighbor,
-                    path_cost=current.path_cost + graph.get_weight(current.state, neighbor),
+                    path_cost=current.path_cost
+                    + graph.get_weight(current.state, neighbor),
                 )
                 children.append(child)
                 open_states.add(neighbor)
         open_list = children + open_list
 
     # Step 2 (loop ended): open is empty -> search fails
-    return None
+    return None
