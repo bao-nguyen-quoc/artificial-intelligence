@@ -153,7 +153,9 @@ f(n) = g(n) + h'(n)
 2. Nếu `open` rỗng → tìm kiếm thất bại, kết thúc.
 3. Lấy đỉnh đầu trong `open` ra, gọi là `O`. Cho `O` vào `closed`.
 4. Nếu `O` là đỉnh đích → tìm kiếm thành công, kết thúc.
-5. Tìm tất cả các đỉnh con của `O` **không thuộc `open` và `closed`**, cho vào `open` theo thứ tự tăng dần về **hàm đánh giá f(n) = g(n) + h'(n)**.
+5. Với mỗi đỉnh con `C` của `O`, tính `g' = g(O) + cost(O, C)`:
+   - Nếu `C` chưa thuộc `open` và `closed`: đặt `g(C) = g'`, `f(C) = g(C) + h(C)`, cha của `C` là `O`, cho `C` vào `open`.
+   - Ngược lại, nếu `g' < g(C)`: cập nhật `g(C) = g'`, `f(C) = g' + h(C)`, cha của `C` là `O`; nếu `C` đang ở `closed` thì chuyển `C` trở lại `open`.
 6. Quay lại bước 2.
 
 **Tính chất:**

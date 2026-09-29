@@ -1,1 +1,1 @@
-from src.utils.graph import Graph, Node
+from .graph import Graph, Node
