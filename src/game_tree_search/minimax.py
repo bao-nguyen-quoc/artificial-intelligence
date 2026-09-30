@@ -4,9 +4,6 @@ from typing import Any
 from src.utils.game import Game, SearchResult, SearchStats
 
 
-# ---------------------------------------------------------------------------
-# Task 1: Pure Minimax
-# ---------------------------------------------------------------------------
 def minimax(game: Game, state: Any) -> SearchResult:
     stats = SearchStats()
     value, action = _minimax(game, state, stats)
@@ -44,9 +41,6 @@ def _minimax(game: Game, state: Any, stats: SearchStats) -> tuple[float, Any | N
     return best, best_action
 
 
-# ---------------------------------------------------------------------------
-# Task 2: Depth-limited Minimax
-# ---------------------------------------------------------------------------
 def minimax_depth_limited(
     game: Game, state: Any, depth: float = math.inf
 ) -> SearchResult:
@@ -90,9 +84,6 @@ def _minimax_depth_limited(
     return best, best_action
 
 
-# ---------------------------------------------------------------------------
-# Task 3: Minimax with Alpha-Beta pruning
-# ---------------------------------------------------------------------------
 def minimax_alpha_beta(game: Game, state: Any, depth: float = math.inf) -> SearchResult:
     stats = SearchStats()
     value, action = _alpha_beta(game, state, depth, -math.inf, math.inf, stats)
@@ -150,9 +141,6 @@ def _alpha_beta(
         return beta, best_action
 
 
-# ---------------------------------------------------------------------------
-# Task 4: Minimax with Alpha-Beta pruning (negamax style)
-# ---------------------------------------------------------------------------
 def _sign(game: Game, state: Any) -> int:
     return 1 if game.to_move(state) else -1
 
