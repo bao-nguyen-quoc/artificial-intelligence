@@ -1,5 +1,5 @@
 from src.informed_search.greedy_best_first_search import greedy_best_first_search
-from src.utils import Graph
+from src.utils.graph import Graph
 
 
 def zero_heuristic(state, goal) -> float:

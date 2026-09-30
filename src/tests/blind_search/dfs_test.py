@@ -1,5 +1,5 @@
 from src.blind_search.dfs import dfs
-from src.utils import Graph
+from src.utils.graph import Graph
 
 
 class TestDfsBasic:

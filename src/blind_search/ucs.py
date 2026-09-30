@@ -1,6 +1,6 @@
 import heapq
 
-from ..utils import Graph, Node
+from src.utils.graph import Graph, Node
 
 
 def ucs(graph: Graph, start: any, goal: any) -> Node | None:

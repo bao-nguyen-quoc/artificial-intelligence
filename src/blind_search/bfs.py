@@ -1,6 +1,6 @@
 from collections import deque
 
-from ..utils import Graph, Node
+from src.utils.graph import Graph, Node
 
 
 def bfs(graph: Graph, start: any, goal: any) -> Node | None:

@@ -2,7 +2,7 @@ import heapq
 from collections.abc import Callable
 from typing import Any
 
-from ..utils import Graph, Node
+from src.utils.graph import Graph, Node
 
 
 def manhattan_heuristic(state: Any, goal: Any) -> float:
