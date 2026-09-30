@@ -1,5 +1,5 @@
 from src.informed_search.a_star import a_star
-from src.utils import Graph
+from src.utils.graph import Graph
 
 
 def zero_heuristic(state, goal) -> float:

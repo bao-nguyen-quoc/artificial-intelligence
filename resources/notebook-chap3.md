@@ -170,35 +170,36 @@ f(n) = g(n) + h'(n)
 
 #### 3.3.1 Tìm kiếm Minimax
 
-> Ý tưởng: trong trò chơi 2 người, lượt MAX cố **tối đa hoá** lợi ích, lượt MIN cố **tối thiểu hoá** lợi ích của MAX. Cả hai đều chơi tối ưu.
+> Ý tưởng: trong trò chơi 2 người, lượt MAX cố **tối đa hoá** lợi ích của bản thân, lượt MIN cố **tối thiểu hoá** giá trị đó. Cả hai đều chơi tối ưu.
 
 Minimax được xây dựng dựa trên giả thiết:
+- Cả 2 chơi luân phiên theo lượt
 - Cả 2 đối thủ có cùng kiến thức và không gian trạng thái của trò chơi (ví dụ cờ vua: 2 người chơi cùng chia sẻ luật chơi và trạng thái bàn cờ).
 - Cả 2 đối thủ có cùng mức cố gắng như nhau.
 
 ```
-          [MAX]
-        /       \
-    [MIN]        [MIN]
-    /   \        /   \
-   3     5      2     9
-  / \   / \    / \   / \
- 0   1 2   3  4   5 6   7
+        [MAX]  = 3
+       /     \
+   [MIN]=3   [MIN]=2
+    /  \      /  \
+   3    5    2    9
 ```
 
 **Thứ tự thực thi:** DFS từ trên xuống, trả giá trị từ dưới lên.
 
 > Minimax dùng DFS (Depth-First Search): đi sâu xuống tận lá trước, rồi mới "bubble up" giá trị lên từng lớp.
 
-**Minimax với độ sâu giới hạn**
+**Vấn đề của Minimax thuần**
 
-Trong thực tế, không gian trạng thái thường quá lớn để mở rộng toàn bộ (ví dụ: cờ vua có ~10^120 trạng thái). Minimax thuần tuý đòi hỏi phải có toàn bộ cây trò chơi để gán giá trị cho lá rồi tính ngược lên - điều này không khả thi.
+Minimax thuần phải mở rộng toàn bộ cây đến các nút kết thúc rồi mới tính ngược lên. Với cờ vua, cây trò chơi có cỡ ~10^120 ván (con số Shannon), còn số trạng thái bàn cờ hợp lệ khoảng 10^43 – 10^47. Cả hai đều không thể duyệt hết.
+
+**Minimax với độ sâu giới hạn**
 
 Hướng giải quyết: **Giới hạn** không gian trạng thái theo **độ sâu** và/hoặc **số node con**.
 
-**Giới hạn theo độ sâu**
+**Giới hạn theo độ sâu  (depth-limited minimax)**
 
-Thay vì đào sâu đến tận cuối game, chỉ nhìn trước `d` bước rồi dừng:
+Thay vì đào sâu đến tận cuối game, chỉ nhìn trước `d` bước rồi dừng, và dùng **hàm đánh giá (evaluation function)** để ước lượng giá trị của nút tại đó:
 
 ```
 Minimax thuần túy:
@@ -208,7 +209,29 @@ Minimax depth-limited:
 ROOT -> lớp 1 -> lớp 2 -> lớp 3 - dừng tại đây và evaluate luôn dù game chưa kết thúc
 ```
 
-**Giới hạn theo node con**
+Hàm đánh giá là một heuristic ước lượng thế cờ tốt hay xấu cho MAX (ví dụ cờ vua: tổng giá trị quân, vị trí quân, an toàn của vua, kiểm soát trung tâm, ...). Chất lượng của AI phụ thuộc rất nhiều vào hàm này. Vì đây chỉ là ước lượng, kết quả depth-limited chỉ tối ưu theo hàm đánh giá ở độ sâu d, không đảm bảo tối ưu theo nghĩa của cả ván cờ.
+
+**Thuật toán (pseudocode):**
+
+```
+function minimax(node, depth, maximizingPlayer)
+  if node is "end node"
+    return value(node)
+  if depth == 0
+    return evaluation_function(node)
+  if maximizingPlayer
+    MAX := -∞
+    foreach child of node
+      MAX := max(MAX, minimax(child, depth - 1, false))
+    return MAX
+  else
+    MIN := +∞
+    foreach child of node
+      MIN := min(MIN, minimax(child, depth - 1, true))
+    return MIN
+```
+
+**Giới hạn theo node con (forward pruning / beam search)**
 
 Không duyệt tất cả nước đi có thể, mà chỉ giữ lại những nước đi **có triển vọng** theo một quy tắc nào đó:
 
@@ -226,25 +249,7 @@ Ví dụ: trong cờ vua - "Chỉ xét các nước đi mang tính tấn công/p
 
 **Đánh đổi:** mất tính chính xác tuyệt đối (không còn guaranteed optimal) nhưng chạy được trong thực tế.
 
-**Thuật toán (pseudocode):**
-
-```
-function minimax(node, depth, maximizingPlayer)
-  if node is "end node" or depth = 0
-    return value(node)
-  if maximizingPlayer
-    MAX := -∞
-    foreach child of node
-      MAX := max(MAX, minimax(child, depth - 1, false))
-    return MAX
-  else
-    MIN := +∞
-    foreach child of node
-      MIN := min(MIN, minimax(child, depth - 1, true))
-    return MIN
-```
-
-**Vấn đề:** kể cả khi giới hạn độ sâu, số đỉnh con của một đỉnh bất kỳ vẫn rất lớn.
+**Vấn đề còn lại:** kể cả khi giới hạn độ sâu, số đỉnh con của một đỉnh bất kỳ vẫn rất lớn.
 
 Ví dụ: Cờ vua trung bình có branching factor ≈ 35. Với độ sâu giới hạn = 4, cần ít nhất ~$35^4$ ≈ 1.5 triệu phép đánh giá. Vì vậy cần phương pháp **giảm số nhánh** phải duyệt.
 
@@ -263,11 +268,13 @@ Ví dụ: Cờ vua trung bình có branching factor ≈ 35. Với độ sâu gi�
 
 ```
 function minimax(node, depth, maximizingPlayer)
-  return alphaBeta(node, depth, -∞, +∞, true)
+  return alphaBeta(node, depth, -∞, +∞, maximizingPlayer)
 // -----------------------------------------------------------
 function alphaBeta(node, depth, alpha, beta, maximizingPlayer)
-  if node is "end node" or depth = 0
+  if node is "end node"
     return value(node)
+  if depth == 0
+    return evaluation_function(node)
   if maximizingPlayer
     foreach child of node
       alpha := max(alpha, alphaBeta(child, depth - 1, alpha, beta, false))
@@ -282,8 +289,10 @@ function alphaBeta(node, depth, alpha, beta, maximizingPlayer)
     return beta
 // -----------------------------------------------------------
 function alphaBeta(node, depth, alpha, beta)
-  if node is "end node" or depth = 0
+  if node is "end node"
     return value(node)
+  if depth = 0
+    return evaluation_function(node)
   foreach child of node
     alpha := max(alpha, -alphaBeta(child, depth - 1, -beta, -alpha))
     if alpha >= beta
@@ -291,7 +300,10 @@ function alphaBeta(node, depth, alpha, beta)
   return alpha
 ```
 
-*Lưu ý:* Phiên bản cuối cùng (Negamax) gộp logic MAX/MIN vào cùng một hàm bằng cách đảo dấu - gọn hơn nhưng tương đương về kết quả.
+**Lưu ý:** Phiên bản cuối cùng (Negamax) gộp logic MAX/MIN vào cùng một hàm bằng cách đảo dấu - gọn hơn nhưng tương đương về kết quả. Cần tuân thủ các yêu cầu sau:
+
+1. `evaluate_function` và `value` phải trả về giá trị theo góc nhìn của người sắp đi ở nút đó (lượt MIN thì nhân -1 để đảo dấu).
+2. Lời gọi ban đầu là `alphaBeta(root, depth, -∞, +∞)`.
 
 ### 3.4 Các vấn đề khác
 

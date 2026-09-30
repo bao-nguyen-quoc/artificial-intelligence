@@ -1,5 +1,5 @@
 from src.blind_search.ucs import ucs
-from src.utils import Graph
+from src.utils.graph import Graph
 
 
 class TestUcsBasic:

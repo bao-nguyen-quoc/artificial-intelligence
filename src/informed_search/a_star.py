@@ -3,8 +3,8 @@ import itertools
 from collections.abc import Callable, Iterator
 from typing import Any
 
-from ..utils import Graph, Node
-from .greedy_best_first_search import manhattan_heuristic
+from src.informed_search.greedy_best_first_search import manhattan_heuristic
+from src.utils.graph import Graph, Node
 
 
 def _push_to_open(

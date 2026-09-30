@@ -4,4 +4,4 @@
 
 [tool.pytest.ini_options]
 # Add project root to sys.path so absolute imports like `src.utils` work
-pythonpath = ["."]
+pythonpath = [".", "src"]
