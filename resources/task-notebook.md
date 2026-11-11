@@ -8,8 +8,14 @@
 
 ## Chapter 8: Thuật toán di truyền (Genetic algorithm)
 
+- [ ] Cần cài đặt code
+
 ## Chapter 9: Học máy (Machine learning)
 
 ## Chapter 10: K-means clustering
 
+- [ ] Cần cài đặt code
+
 ## Chapter 11: Mạng neuron nhân tạo (Neuron network)
+
+- [ ] Cần cài đặt code (một lớp mạng vừa hoặc cực kỳ nhỏ, chỉ cần mang tính tìm hiểu thôi)
