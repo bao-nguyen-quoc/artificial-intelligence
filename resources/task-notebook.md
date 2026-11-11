@@ -6,10 +6,10 @@
 
 ## Chapter 7: Tính toán tiến hoá (Evolutionary computing)
 
-## Chapter 8: Học máy (Machine learning)
+## Chapter 8: Thuật toán di truyền (Genetic algorithm)
 
-## Chapter 9: K-means clustering
+## Chapter 9: Học máy (Machine learning)
 
-## Chapter 10: Thuật toán di truyền
+## Chapter 10: K-means clustering
 
 ## Chapter 11: Mạng neuron nhân tạo (Neuron network)
