@@ -11,6 +11,7 @@ Project to support learning purpose on university
 
 ```
 artificial-intelligence/
+├── notebooks/ # Jupyter notebooks (.ipynb) to experiment with basic machine learning programs
 ├── resources/ # Notebooks and references to learn (in vietnamese)
 └── src/       # Source code of the project, implement algorithms in resources (in python)
 ```
