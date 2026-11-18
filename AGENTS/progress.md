@@ -2,6 +2,10 @@
 
 Newest first. One line per finished task; put the reason in decisions.md, not here.
 
+## Chapter 10 - practical notebook review (2026-11-18, branch feature/chapter-10)
+- Reviewed and edited `notebooks/k_means_clustering.ipynb` (Colab, Iris, 48 -> 53 cells). Fixed 3 wrong/loose claims (silhouette "giảm dần", elbow "hơn một nửa", scaling "ít ảnh hưởng"), added title/data-quality/K=3 observation cells and an exercise table. All cells re-run OK; original outputs/images untouched.
+- Open: still untracked (`??`), owner commits. Prose uses lowercase `k`, chapter md uses `K`; left as is because plot titles/labels in embedded images say `k`.
+
 ## Chapter 10 - K-means clustering (branch feature/chapter-10)
 - Done: `resources/notebook-chap10.md` (sections 10.1-10.8: concept, objective J, algorithm, hand trace, practical issues, applications table, summary, keywords). About 400 lines.
 - Revisions on the owner's request (keep the notebook short): (1) removed the stdlib implementation section; (2) removed 10.6.1 (Iris) and 10.6.2 (color-quantization snippet), keeping only the applications table; (3) removed the last two rows of the summary table (`Thực hành`, `Hướng tiếp theo`). Earlier note: the stdlib implementation section (old 10.6: code, experiments, scikit-learn comparison, "Thử thay đổi") was removed as redundant; later sections were renumbered 10.6-10.8.

@@ -7,6 +7,7 @@
 
 ## Current state (agent-maintained)
 - Status: Chapter 1-10 - done (chapter 10 not yet committed; branch feature/chapter-10; owner adds the final notebook file before commit)
+- Chapter 10 practical notebook: `notebooks/k_means_clustering.ipynb` (Iris, Colab; reviewed 2026-11-18, untracked)
 - Next up: Chapter 11 (artificial neural network) - not started
 
 ## Files (agent-maintained)
